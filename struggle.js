@@ -20,8 +20,6 @@ function incrementScore(event) {
 
 	hiScore = player1score > player2score ? player1score : player2score;
 
-	// console.log(hiScore);
-
 	score1.innerHTML = player1score;
 	score2.innerHTML = player2score;
 
@@ -36,8 +34,6 @@ function incrementScore(event) {
 }
 
 function reset() {
-	debugger
-
 	goal1_container.classList.remove('hidden');
 	goal2_container.classList.remove('hidden');
 

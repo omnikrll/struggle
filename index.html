@@ -4,7 +4,62 @@
 	<title>
 		the struggle is real
 	</title>
-	<link rel="stylesheet" href="style.css"/>
+	<style>
+		/*		@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css'); */
+
+		* {
+			border: none;
+			margin: 0 !important;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: monospace;
+			color: grey;
+			text-align: center;
+			background: black;
+		}
+
+		h1 {
+			transform: translateY(0.67em);
+		}
+
+		h1, p {
+			pointer-events: none;
+		}
+
+		#playfield {
+			width: 100vw;
+			height: 100vh;
+			position: relative;
+			top: 0;
+			left: 0;
+		}
+
+		#zone {
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			display: flex;
+			justify-content: space-between;
+			font-size: 2em;
+			padding: 0 2em;
+		}
+
+		#winState {
+			width: 100%;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.hidden * {
+			pointer-events: none;
+		}
+	</style>
 </head>
 <body>
 	<div id="playfield">
@@ -16,7 +71,7 @@
 			</div>
 			<div id="winState" class="hidden">
 				<p id="winner"></p>
-				<p><a href="#" id="reset">play again</a></p>
+				<a href="#" id="reset">play again</a>
 			</div>
 			<div id="goal2_container">
 				<a href="#" id="goal2">click</a>
@@ -24,6 +79,61 @@
 			</div>
 		</div>
 	</div>
-	<script src="struggle.js"></script>
+	<script>
+		var player1score = 0,
+			player2score = 0,
+			hiScore = 0,
+			goal1_container = document.querySelector('#goal1_container'),
+			goal2_container = document.querySelector('#goal2_container'),
+			goal1 = document.querySelector('#goal1'),
+			goal2 = document.querySelector('#goal2'),
+			score1 = document.querySelector('#score1'),
+			score2 = document.querySelector('#score2'),
+			resetBtn = document.querySelector('#reset'),
+			winState = document.querySelector('#winState'),
+			winnerField = document.querySelector('#winner');
+
+		function incrementScore(event) {
+			event.preventDefault();
+
+			var goalClicked = event.target.id;
+
+			goalClicked == 'goal1' ? player1score++ : player2score++;
+
+			hiScore = player1score > player2score ? player1score : player2score;
+
+			score1.innerHTML = player1score;
+			score2.innerHTML = player2score;
+
+			if (hiScore == 14) {
+			
+				goal1_container.classList.add('hidden');
+				goal2_container.classList.add('hidden');
+
+				winner.innerHTML = player1score > player2score ? 'player 1 wins' : 'player 2 wins';
+				winState.classList.remove('hidden');
+			}
+		}
+
+		function reset() {
+			goal1_container.classList.remove('hidden');
+			goal2_container.classList.remove('hidden');
+
+			winner.innerHTML = '';
+			winState.classList.add('hidden');
+
+			player1score = 0;
+			score1.innerHTML = player1score;
+
+			player2score = 0;
+			score2.innerHTML = player2score;
+
+			hiScore = 0;
+		}
+
+		resetBtn.addEventListener('click', reset);
+		goal1.addEventListener('click', incrementScore);
+		goal2.addEventListener('click', incrementScore);
+	</script>
 </body>
 </html>
