@@ -49,6 +49,6 @@ function reset() {
 	hiScore = 0;
 }
 
-resetBtn.addEventListener('click', reset);
-goal1.addEventListener('click', incrementScore);
-goal2.addEventListener('click', incrementScore);
+resetBtn.addEventListener('mouseup', reset);
+goal1.addEventListener('mouseup', incrementScore);
+goal2.addEventListener('mouseup', incrementScore);
