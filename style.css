@@ -1,0 +1,42 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: monospace;
+	color: grey;
+	text-align: center;
+	background: black;
+}
+
+#playfield {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+#zone {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: space-between;
+	padding: 0 3em;
+}
+
+#winState {
+	width: 100%;
+}
+
+.hidden {
+	display: none;
+}
+
+.hidden * {
+	pointer-events: none;
+}
