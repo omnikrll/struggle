@@ -1,8 +1,8 @@
 var player1score = 0,
 	player2score = 0,
 	hiScore = 0,
-	goal1_container = document.querySelector('#goal1_container'),
-	goal2_container = document.querySelector('#goal2_container'),
+	gamePoint = 7,
+	goals = document.querySelectorAll('.goal'),
 	goal1 = document.querySelector('#goal1'),
 	goal2 = document.querySelector('#goal2'),
 	score1 = document.querySelector('#score1'),
@@ -23,19 +23,25 @@ function incrementScore(event) {
 	score1.innerHTML = player1score;
 	score2.innerHTML = player2score;
 
-	if (hiScore == 14) {
-	
-		goal1_container.classList.add('hidden');
-		goal2_container.classList.add('hidden');
+	if (hiScore == gamePoint) {
 
-		winner.innerHTML = player1score > player2score ? 'player 1 wins' : 'player 2 wins';
+		for (var i=0, ii=goals.length; i<ii; i++) {
+			goals[i].classList.add('hidden');
+		}
+
+		winner.innerHTML = player1score > player2score ? 'magical girl wins' : 'skull wins';
 		winState.classList.remove('hidden');
 	}
 }
 
-function reset() {
-	goal1_container.classList.remove('hidden');
-	goal2_container.classList.remove('hidden');
+function reset(event) {
+	console.log(event);
+	event.preventDefault();
+
+	for (var i=0, ii=goals.length; i<ii; i++) {
+		console.log(goals);
+		goals[i].classList.remove('hidden');
+	}
 
 	winner.innerHTML = '';
 	winState.classList.add('hidden');
