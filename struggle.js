@@ -1,15 +1,18 @@
-var player1score = 0,
-	player2score = 0,
-	hiScore = 0,
-	gamePoint = 7,
-	goals = document.querySelectorAll('.goal'),
-	goal1 = document.querySelector('#goal1'),
-	goal2 = document.querySelector('#goal2'),
-	score1 = document.querySelector('#score1'),
-	score2 = document.querySelector('#score2'),
-	resetBtn = document.querySelector('#reset'),
-	winState = document.querySelector('#winState'),
-	winnerField = document.querySelector('#winner');
+// var player1score = 0,
+// 	player2score = 0,
+// 	hiScore = 0,
+// 	gamePoint = 7,
+var player1hp = 10,
+	player2hp = 10,
+	goals = document.getElementsByClassName('.goal'),
+	goal1 = document.getElementById('#goal1'),
+	goal2 = document.getElementById('#goal2'),
+	score1 = document.getElementById('#score1'),
+	score2 = document.getElementById('#score2'),
+	scoreboard = document.getElementById('#scoreboard'),
+	resetBtn = document.getElementById('#reset'),
+	winState = document.getElementById('#winState'),
+	winnerField = document.getElementById('#winner');
 
 function incrementScore(event) {
 	event.preventDefault();
