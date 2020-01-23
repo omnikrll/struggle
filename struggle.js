@@ -1,14 +1,16 @@
-var hpMax = 10,
-	player1hp = hpMax,
-	player2hp = hpMax,
-	goals = document.querySelectorAll('.goal'),
-	goal1 = document.querySelector('#goal1'),
-	goal2 = document.querySelector('#goal2'),
-	score1 = document.querySelector('#score1'),
-	score2 = document.querySelector('#score2'),
-	resetBtn = document.querySelector('#reset'),
-	winState = document.querySelector('#winState'),
-	winnerField = document.querySelector('#winner');
+const goals = document.querySelectorAll('.goal');
+const goal1 = document.querySelector('#goal1');
+const goal2 = document.querySelector('#goal2');
+const score1 = document.querySelector('#score1');
+const score2 = document.querySelector('#score2');
+const resetBtn = document.querySelector('#reset');
+const winState = document.querySelector('#winState');
+const winnerField = document.querySelector('#winner');
+const hpMax = 10;
+
+var player1hp = hpMax,
+	player2hp = hpMax;
+
 
 function incrementScore(event) {
 	event.preventDefault();
