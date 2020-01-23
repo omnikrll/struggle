@@ -1,7 +1,6 @@
-var player1score = 0,
-	player2score = 0,
-	hiScore = 0,
-	gamePoint = 7,
+var hpMax = 10,
+	player1hp = hpMax,
+	player2hp = hpMax,
 	goals = document.querySelectorAll('.goal'),
 	goal1 = document.querySelector('#goal1'),
 	goal2 = document.querySelector('#goal2'),
@@ -16,26 +15,23 @@ function incrementScore(event) {
 
 	var goalClicked = event.target.id;
 
-	goalClicked == 'goal1' ? player1score++ : player2score++;
+	goalClicked == 'goal1' ? player1hp-- : player2hp--;
 
-	hiScore = player1score > player2score ? player1score : player2score;
+	score1.innerHTML = player1hp;
+	score2.innerHTML = player2hp;
 
-	score1.innerHTML = player1score;
-	score2.innerHTML = player2score;
-
-	if (hiScore == gamePoint) {
+	if (player1hp == 0 || player2hp == 0) {
 
 		for (var i=0, ii=goals.length; i<ii; i++) {
 			goals[i].classList.add('hidden');
 		}
 
-		winner.innerHTML = player1score > player2score ? 'magical girl wins' : 'skull wins';
+		winner.innerHTML = player1hp > player2hp ? 'magical girl wins' : 'skull wins';
 		winState.classList.remove('hidden');
 	}
 }
 
 function reset(event) {
-	console.log(event);
 	event.preventDefault();
 
 	for (var i=0, ii=goals.length; i<ii; i++) {
@@ -46,13 +42,11 @@ function reset(event) {
 	winner.innerHTML = '';
 	winState.classList.add('hidden');
 
-	player1score = 0;
-	score1.innerHTML = player1score;
+	player1hp = hpMax;
+	score1.innerHTML = player1hp;
 
-	player2score = 0;
-	score2.innerHTML = player2score;
-
-	hiScore = 0;
+	player2hp = hpMax;
+	score2.innerHTML = player2hp;
 }
 
 resetBtn.addEventListener('mouseup', reset);
