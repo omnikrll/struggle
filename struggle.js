@@ -17,7 +17,6 @@ var player1hp = hpMax,
 	player2hp = hpMax,
 	hitCounter = 0;
 
-
 function incrementScore(event) {
 	event.preventDefault();
 
@@ -31,12 +30,18 @@ function incrementScore(event) {
 	switch(hitCounter) {
 		case 0:
 			punch1.play();
+			punch2.pause();
+			punch2.currentTime = 0;
 			break;
 		case 1:
 			punch2.play();
+			punch3.pause();
+			punch3.currentTime = 0;
 			break;
 		case 2:
 			punch3.play();
+			punch1.pause();
+			punch1.currentTime = 0;
 			hitCounter = -1;
 			break;
 	}
